@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome Mix</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "jquery-ui.css" %}" type="text/css" media="all" />
+    <script src="{% static "d3.v3.min.js" %}"></script>
+    <script src="{% static "jquery.min.js" %}"></script>
+    <script src="{% static "jquery-ui.min.js" %}"></script>
+    <script src="{% static "split.js" %}"></script>
+    <script src="{% static "tree.js" %}"></script>
+    <link rel="stylesheet" href="{% static "split.css" %}"/>
+    <link rel="stylesheet" href="{% static "pmat.css" %}"/>
+</head>
+<body>
+    <div id="up" class="split">
+        <div id="left" class="split split-horizontal"></div>
+        <div id="detail" class="split split-horizontal"></div>
+    </div>
+    <div id="down" class="split"></div>
+
+    {# TODO: control panel #}
+    <div></div>
+    <script>
+        Split(['#up', '#down'], {
+            sizes:[80,20],
+            direction: 'vertical'
+        });
+
+        Split(['#left', '#detail'], {
+             sizes:[70,30],
+        });
+        var static_url = '{{ STATIC_URL }}';
+
+        drawTree();
+        drawTopic();
+        visit(296);
+    </script>
+</body>
+</html>

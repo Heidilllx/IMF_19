@@ -1,0 +1,28 @@
+.selected{
+    background-color: yellow;
+    opacity: 1;
+}
+
+.node {
+    border: solid 1px white;
+    line-height: 0.95;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 6px;
+}
+
+.topic{
+    float: left;
+    position: relative;
+}
+
+.selected{
+    background-color: orange;
+    width: 3%;
+}
+
+.visit,.total{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+}

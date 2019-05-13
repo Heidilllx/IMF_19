@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome Mix</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "jquery-ui.css" %}" type="text/css" media="all" />
+    <script src="{% static "d3.v3.min.js" %}"></script>
+    <script src="{% static "jquery.min.js" %}"></script>
+    <script src="{% static "jquery-ui.min.js" %}"></script>
+    <script src="{% static "split.js" %}"></script>
+    <script src="{% static "pmat.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "pmat.css" %}"/>
+</head>
+<body>
+    <div id="history" class="split split-horizontal">
+      <div class="content"></div>
+    </div>
+    <div id="mat" class="split split-horizontal">
+        <div class="content">
+            <select id="x" style="{position: absolute; left:50%;}">
+                {% for d in dims %}
+                    <option value="{{ d }}">{{ d }}</option>
+                {% endfor %}
+            </select>
+            <select id="y" style="{position: absolute; top:50%;}">
+                {% for d in dims %}
+                    <option value="{{ d }}">{{ d }}</option>
+                {% endfor %}
+            </select>
+            <div id="canvas"></div>
+        </div>
+    </div>
+    <div id="topics" class="split split-horizontal">
+      <div class="content">
+          {% for t in topics %}
+              <div style="{height: 5%; width:{{ t.size }}%; color:grey; opacity: {{ t.quality }}" id="topic-{{ t.tid }}" class="topic"></div>
+          {% endfor %}
+      </div>
+    </div>
+    <div id="detail"></div>
+
+    {# TODO: control panel #}
+    <div></div>
+    <script>
+        Split(['#history', '#mat','#topics'], {
+             sizes:[20,45,35],
+        });
+        var static_url = '{{ STATIC_URL }}';
+        $('select').change(function(){
+            {# change dimention #}
+            var dim = $(this).id();
+            var val = $(this).selected().text()
+            $.get('set?'+dim+'='+val, function(){
+                reset_scale(function(){
+
+                })
+            });
+        })
+        start();
+    </script>
+</body>
+</html>

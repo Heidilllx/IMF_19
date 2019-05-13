@@ -1,0 +1,338 @@
+.item, .history{
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.topic{
+    /*padding-left: 7px;*/
+    overflow: hidden;
+    height: calc(33.33% - 5px);
+    width: 100%
+}
+.topic:not(.middle) img:not(:hover){
+    /*-webkit-filter: grayscale(30%);*/
+	/*filter: grayscale(30%);*/
+    /*-webkit-filter: blur(1px);*/
+	/*filter: blur(1px);*/
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.end{
+    display: none !important;
+}
+
+#wrap{
+    height: 100%
+}
+
+img {
+    float: left;
+    display: block;
+    height: 100%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#collection .item{
+    width: 19.5%;
+    height: auto;
+}
+
+#msnap img{
+    width: 100%;
+    height: auto;
+}
+
+.snap_title{
+    background-color: lightgoldenrodyellow;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    top: 50%
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+* html .ui-autocomplete {
+    height: 200px;
+}
+.ui-autocomplete-loading {
+    background: white url("http://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+
+img.desaturate{
+    -webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+#wraphistory{
+    height: 100%;
+    overflow: hidden;
+}
+
+/*.highlight{*/
+    /*border-color: ;*/
+    /*border-style: solid;*/
+    /*border-width: 4px 0px 4px 0px;*/
+/*}*/
+#filter{
+    display: inline-block;
+}
+.filter{
+    display: none;
+}
+.weight{
+    display: inline-block;
+    /*width: calc(20% - 5px);*/
+    /*min-width: 25px;*/
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+#content
+ .ui-tabs-panel{
+     height: calc(100% - 25px);
+     padding: 0px;
+     overflow-y: auto;
+     font-size: 12px;
+ }
+
+ .ui-widget-header {
+    background: #cccccc url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) repeat-x !important;
+    color: #222222;
+    font-weight: bold;
+    height:19px
+}
+
+.ui-widget-header ul {
+    height:17px;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    overflow: hidden;
+    height:13px;
+    font-size:11px;
+
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    position:relative;
+    top:-6px
+}
+#overview-wrap{
+    overflow: hidden;
+}
+
+.middle{
+    opacity: 1;
+    /*height: calc(40% - 20px);*/
+    border-style: solid;
+    border-width: 10px 0px 10px 0px;
+}
+
+.dim{
+    width: 100%;
+    height: 20px;
+    cursor:pointer;
+    font-size: larger;
+    border-top: 2px solid lightgrey;
+}
+
+.dim td:before{
+    content: '[-]';
+}
+
+.collapse td:before{
+    content: '[+]'
+}
+
+.star-ratings-css {
+  /*unicode-bidi: bidi-override;*/
+  color: #c5c5c5;
+  font-size: 25px;
+  /*height: 25px;*/
+  width: 100px;
+  /*margin: 0 auto;*/
+  position: relative;
+  /*padding: 0;*/
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+  .star-ratings-css-top {
+    color: #e7711b;
+    padding: 0;
+    text-shadow: 0px 1px 0 #ab5414;
+    position: absolute;
+    z-index: 1;
+    display:block;
+    left: 0px;
+    overflow: hidden;
+  }
+  .star-ratings-css-bottom { z-index: 0; }
+
+.item:hover .title{
+    display: block;
+}
+.title{
+    background-color: white;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    bottom:0px;
+    left: 0px;
+    display: none;
+}
+.ritem{
+    width: 32%; float: left; position: relative
+}
+
+.comp:after{
+    color: red;
+    content: ' \25CF'
+}
+.snap{
+    width: 98%;
+    background: lightgoldenrodyellow;
+    text-align:center;
+    vertical-align: middle;
+    font-size: 15px;
+    border-style: inset;
+    line-height: 30px;
+}
+
+.featherlight-content{
+    width: 40%;
+}
+
+.collect{
+    margin-bottom: 7px;
+    height: 60px;
+    width: 100%;
+    position: relative;
+}
+
+.sidebtn img{
+    display: none;
+}
+
+.middle .sidebtn img{
+    display: block;
+}
+
+.sidebtn{
+    float: left;
+    height: 100%;
+    width: 20px;
+}
+
+.itemwrap{
+    overflow: hidden;
+    float: left;
+    height: 100%;
+    width: calc(100% - 40px)
+}
+
+.visited{
+    display: none;
+}
+
+.hide{
+    height: 8px;
+}
+
+.hide div{
+    visibility: hidden;
+}
+
+#tooltip{
+    position: absolute;
+    background: papayawhip;
+    border-radius: 5px;
+    text-align: center;
+    font-size: large;
+    min-width: 30px;
+    min-height: 20px;
+    border: gray 2px solid;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.related{
+    fill: orange
+}
+.selected{
+    r: 12;
+    fill: orange
+}
+
+.visited_dot{
+    fill: red !important;
+}
+
+.legend-dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 9px;
+    border: darkgray 1px solid;
+    float: left;
+}
+
+.legend_cur{
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    border: darkgray 1px solid;
+    float: left;
+}
+
+.legend_wrap{
+    float: left;
+    margin-right: 20px;
+}
+
+.review_cnt{
+    font-size: 9px;
+}
+
+.filter_key{
+    background: lightgoldenrodyellow;
+}
+
+.ui-slider .ui-slider-handle{
+    width: 0.2em;
+    height: 0.8em;
+}
+
+.left_item{
+    float:left;
+    height: 100%
+}
+
+.row{
+    height: 22px
+}
+
+.row td{
+    overflow: hidden;
+    width: 50%;
+}
+.row a{
+    color: black;
+}

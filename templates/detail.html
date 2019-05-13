@@ -1,0 +1,47 @@
+{% if left %}
+    <button onclick="visit({{ mid }})">Find more movies like this!</button>
+{% endif %}
+<div class="snapcontent">
+<table>
+    <tr>
+        <td width="30%">
+            <img src="{{ poster }}" style="width: 100%; height: auto;">
+        </td>
+        <td>
+            <div style="display: table-cell">
+                <h2>{{ title }}<span id="year"> ({{ year }})</span></h2>
+                <div class="basicDetail">
+                    <span>{{ run }}min</span> | <span>{{ genres }}</span> | <span>&#x2605 {{ rate }}/5</span>
+                    <br>
+                </div>
+                {% if trailer %}
+                <br>
+                <a href="javascript:binding('{{ trailer }}');">Watch Trailer</a>
+                {% endif %}
+                <br>
+                Find more about it <a target="_blank" href="http://www.imdb.com/title/tt{{ imdb }}">IMDB</a>
+                <br>
+                <a href="javascript:add_to_collection({{ mid }}, '{{ title }}', '{{ poster }}');">Add to my catalog</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<div>
+    {% for job in topjob %}
+        <div>
+            <b>{{ job.job }}: </b>{{ job.names }}
+        </div>
+        <br>
+    {% endfor %}
+    <div>
+        <b>Stars: </b>{{ star }}
+    </div>
+    <br>
+    <div>
+        <b>Plot: </b>
+        {{ overview }}
+    </div>
+{#    <iframe width="100%" height="390" src="{{ trailer }}" frameborder="0" name="trailer" allowfullscreen></iframe>#}
+</div>
+</div>
+<button onclick="remove_movie({{ mid }})">Remove it from view</button>

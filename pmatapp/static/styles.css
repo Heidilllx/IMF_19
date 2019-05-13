@@ -1,0 +1,81 @@
+/*
+  detial info
+*/
+.title {
+  font-size: 30px;
+}
+#year {
+  font-size: 30px;
+}
+
+.ghost {
+    font-style: normal;
+    color: #888;
+}
+
+#overview {
+  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 20px;
+}
+.inline {
+  display: inline;
+  padding:0 0.5em 0 0;
+  margin: 10px 10px;
+}
+.overviewInfo{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#mainTitle{
+  margin-top: 20px;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+#main {
+  margin-top: 20px;
+}
+#detail {
+  font-family: Verdana, Arial, sans-serif;
+}
+#starRating {
+  margin-top: 10px;
+}
+/*
+  video play button
+*/
+.overlay-mouseover {
+    display: none;
+}
+.image_overlay {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.overlay_mouseout {
+  display: block;
+}
+
+.starbar {
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 1px 0;
+}
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	
+}

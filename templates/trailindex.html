@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome Mix</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "jquery-ui.css" %}" type="text/css" media="all" />
+
+    <script src="{% static "d3.v3.min.js" %}"></script>
+    <script src="{% static "jquery.min.js" %}"></script>
+    <script src="{% static "jquery-ui.min.js" %}"></script>
+    <script src="{% static "split.js" %}"></script>
+    <script src="{% static "jquery.touchSwipe.min.js" %}"></script>
+
+    <script src="{% static "jquery.rateit.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "rateit.css" %}" type="text/css" media="all" />
+
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <script src="{% static "overview.js" %}"></script>
+    <script src="{% static "detail.js" %}"></script>
+    <script src="{% static "topic.js" %}"></script>
+    <script src="{% static "trail.js" %}"></script>
+    <script src="{% static "backbone.js" %}"></script>
+
+
+    <link rel="stylesheet" href="{% static "split.css" %}"/>
+    <link rel="stylesheet" href="{% static "trail.css" %}"/>
+{#    <link rel="stylesheet" href="{% static "styles.css" %}"/>#}
+</head>
+<body style="background: darkslategrey; overflow: hidden">
+    <div id="title" style="height: 30px; width: 100%; color:lightgrey; margin-left: calc(25% + 35px); font-size: 15px">
+        <div style="display: inline">
+            Obscure
+            <div id="slider" style="width: 100px; height: 4px; display: inline-block;"></div>
+{#            <input type="range" id="order" min="0" max="10000" value="2000">#}
+            Popular
+        </div>
+        <div style="margin-left: 20px; display: inline">Filtering Key(s):
+            <div id="filter" style="cursor: pointer"></div>
+{#            <div id="show_filter_search" style="display: inline-block"></div>#}
+            <input id="filtersearch" title="Search for filter profile" placeholder="add a key" style="width: 70px"></div>
+        <button id="overview_btn">More Movies</button>
+    </div>
+    <div id="content" style="height: 85%; width: 100%;">
+        <div id="detail" style="width: 25%; float:left; height:100%; margin-right: 10px">
+            <div id="mdetailwarp" style="height: 98%;
+                border-radius: 5px;
+                border: 5px solid white;
+                font-size: 12px;
+                background: white;">
+                <input id="searchbox" title="Search for a movie title" placeholder="SEARCH BY MOVIE NAME" style="width: 95%; height:30px;border:8px #36508c groove;">
+                <div id="mdetail" style="height: calc(100% - 35px); overflow: auto"></div>
+            </div>
+        </div>
+        <div style="width: 73%; height:100%; float:left">
+            <div id="trailwrap" class="split split-horizontal" >
+{#                <img style="height: 10px; width: 100%" src="{% static "up.png" %}">#}
+                <div id="trail" style="height: 100%; overflow: hidden; position: relative"></div>
+{#                <img style="height: 10px; width: 100%" src="{% static "down.png" %}">#}
+            </div>
+
+            <div id="overview" class="split split-horizontal">
+                <ul>
+                    <li id='summmary_link'><a href="#summary-wrap" title="Summary a theme strip with profiles and top movies">Strip Profile</a></li>
+{#                    <li><a id='summmary_link' href="#">Summary</a></li>#}
+                    <li><a href="#collection" title="My movie collections">My Catalog</a></li>
+                </ul>
+                <div id="summary-wrap"></div>
+                <div id="collection" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <button id="cleancollection">Clear Catalog</button>
+                    <div id="catalog_content">Drag a movie poster and drop it here</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="history" style="height: 10%; width: 100%;">
+        <button id="cleanhistory">Clear History</button>
+        <div style="height: 100%">
+            <div style="float: left" id="wraphistory"></div>
+            <div style="float: left; color: white;" id="history_title"></div>
+        </div>
+    </div>
+    <div id="overview-wrap" ondrop="dropoverview(event)" ondragover="allowDrop(event)"
+         style="position: absolute;
+            top: 50px;
+            left: 27%;
+            display: block;
+            height: 80%;
+            border: 8px solid gray;
+            background: white;
+            border-radius: 5px;
+            width: 50%;">
+        <div style="position: relative; height:100px">
+            <a id="preview"><img style="position: absolute; top:5px; left: 0px; height: 250px"></a>
+            <button id="reset_visit" style="position: absolute; top:5px; right: 60px">Reset</button>
+{#            <button id="overview_help" style="position: absolute; top:5px; right: 115px">Help</button>#}
+            <button id="overview_close" style="position: absolute; top:5px; right: 5px">Close</button>
+            <div id="help_context" style="display: block;
+                position: absolute;
+                width: calc(100% - 270px);
+                font-size: 12px;
+                color: gray;
+                top: -10px;
+                left: 150px;">
+                <ul>
+                    <li>Each dot presents a movie. Red dots are movies you have visited. White dots are not. </li>
+                    <li>Click a dot to see its poster. Golden dots are movies like it.</li>
+                    <li>Drag and drop a poster from any views to find its golden dots.</li>
+                    <li>To get a movie different from what you have visited, click a white dot far way from the red dots.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="overview-svg-wrap" style="height: calc(100% - 245px)"></div>
+        <div id="leftlable">Unvisited movies satisfying current search term(s):</div>
+        <div id="leftlist" style="
+            height: 115px;
+            overflow: auto;">
+        </div>
+{#            <div id="legend" style="position: absolute; bottom: 0px; background: white; white-space: nowrap"></div>#}
+    </div>
+    <div id="tooltip" style="display: none"></div>
+    <div id="invisible_topic" style="display: none"></div>
+
+    <button id="feedback_btn" style="
+            position: absolute;
+            bottom: 0px;
+            right: 15px;
+            font-size: x-large;">Feedback Please:)</button>
+
+    <div id="feedback" style="position: absolute; bottom: 0px; right: 250px; background: white">
+        <button id="feedback_close" style="position: absolute; top:5px; right: 5px">Close</button>
+        <form id="feedback_form">
+            Rate the Site: <span class="rateit" data-rateit-backingfld="#backing2"></span>
+            <input name="rate" type="range" min="0" max="5" value="0" step="0.5" id="backing2">
+            Message:<br>
+            <textarea name="comments" rows="15" cols="50"></textarea><br>
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        var token = '{{csrf_token}}'
+
+        $('#overview-wrap').hide()
+        set_interaction();
+
+        var static_url = '{{ STATIC_URL }}';
+
+        initial_overview()
+
+    </script>
+<a id="dummy" data-featherlight="ajax"></a>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="snap">
+    <a href="detail?mid={{ mid }}" data-featherlight="ajax" draggable="true" ondragstart="add_to_dragdata({{ mid }}, '{{ title }}', '{{ poster }}')">
+{#        <img src="{{ poster }}" width="40px" style="float: left">#}
+        {{ title }}({{ release }})
+    </a>
+{#    <a style="margin-left: 20px; font-size: 9px" href="javascript:add_to_collection({{ mid }}, '{{ title }}', '{{ poster }}');">to catalog</a>#}
+{#    <div class="star-ratings-css">#}
+{#      <div class="star-ratings-css-top" style="width: {{ width }}%">#}
+{#          &#x2605&#x2605&#x2605&#x2605&#x2605#}
+{#      </div>#}
+{#      <div class="star-ratings-css-bottom">#}
+{#          &#x2605&#x2605&#x2605&#x2605&#x2605#}
+{#      </div>#}
+{#    </div>#}
+{#    <div>#}
+{#         | <span>{{ run }}min</span> | <span>{{ genres }}</span>#}
+{#    </div>#}
+</div>
+{#<table style="width: 100%; border-collapse: collapse">#}
+{#{% for d in dims%}#}
+{#    <tr class="dim">#}
+{#        <td colspan="2"> {{ d.key }} </td>#}
+{#    </tr>#}
+{#    {% for m in d.val %}#}
+{#        <tr class="row">#}
+{#            <td>#}
+{#        {% if m.len == 0 %}#}
+{#                <div {% if 'job' in m %} title="{{ m.job }}" {% endif %}>{{ m.val }}</div>#}
+{#            </td>#}
+{#        {% else %}#}
+{#            <span class="order" title="order strips by this term" style="cursor: pointer;">&#9658;</span>#}
+{#            <img src="pmatapp/static/order_by.png" class="order" title="order strips by this term">#}
+{#            <a href='javascript:;'#}
+{#               title="{% if 'job' in m %}job: {{ m.job }}--{% endif %} filter strips by this term"#}
+{#               class="prolink" data-pid="{{ m.pid }}">{{ m.val }}#}
+{#            </a>#}
+{#            </td>#}
+{#            <td data="{{ m.ws }}" class="p_weight"></td>#}
+{#        {% endif %}#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{#{% endfor %}#}
+{#</table>#}
+<p>helloworld</p>
